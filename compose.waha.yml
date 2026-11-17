@@ -1,0 +1,13 @@
+services:
+  waha:
+    image: devlikeapro/waha
+    container_name: meli-waha
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      WAHA_API_KEY: ${WAHA_API_KEY:?Configure WAHA_API_KEY no arquivo .env}
+      WAHA_DASHBOARD_USERNAME: ${WAHA_DASHBOARD_USERNAME:?Configure WAHA_DASHBOARD_USERNAME no arquivo .env}
+      WAHA_DASHBOARD_PASSWORD: ${WAHA_DASHBOARD_PASSWORD:?Configure WAHA_DASHBOARD_PASSWORD no arquivo .env}
+    volumes:
+      - ./data/waha:/app/.sessions
